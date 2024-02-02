@@ -75,8 +75,8 @@ import org.slf4j.LoggerFactory;
 public class SpannerChangeStreamsToBigQueryDeleteLogTable {
     private static final Logger LOG = LoggerFactory.getLogger(SpannerChangeStreamsToPubSub.class);
     private static final String USE_RUNNER_V2_EXPERIMENT = "use_runner_v2";
-    private static final String COMMIT_TS_COLUMN = "commit_ts";
-    private static final String IMPORT_TS_COLUMN = "import_ts";
+    private static final String COMMIT_TS_COLUMN = "committed_at";
+    private static final String IMPORT_TS_COLUMN = "imported_at";
     private static final String KEYS_COLUMN = "keys";
     private static final String TABLE_NAME_COLUMN = "table_name";
 
