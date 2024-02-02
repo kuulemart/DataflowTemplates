@@ -1,5 +1,6 @@
 package com.google.cloud.teleport.v2.templates;
 
+import com.google.cloud.Timestamp;
 import com.google.cloud.spanner.Options;
 import com.google.cloud.teleport.metadata.TemplateParameter;
 import org.apache.beam.runners.dataflow.options.DataflowPipelineOptions;
