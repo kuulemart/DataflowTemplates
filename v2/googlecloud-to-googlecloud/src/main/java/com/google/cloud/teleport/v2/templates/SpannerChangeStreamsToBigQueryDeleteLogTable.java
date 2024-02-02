@@ -25,6 +25,7 @@ import com.google.cloud.teleport.v2.common.UncaughtExceptionLogger;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.cloud.teleport.v2.options.SpannerChangeStreamsToBigQueryDeleteLogTableOptions;
 import com.google.common.collect.ImmutableList;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.PipelineResult;

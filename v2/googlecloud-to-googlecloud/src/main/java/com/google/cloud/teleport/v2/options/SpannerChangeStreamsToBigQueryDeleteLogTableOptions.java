@@ -1,4 +1,4 @@
-package com.google.cloud.teleport.v2.templates;
+package com.google.cloud.teleport.v2.options;
 
 import com.google.cloud.Timestamp;
 import com.google.cloud.spanner.Options;
@@ -7,7 +7,7 @@ import org.apache.beam.runners.dataflow.options.DataflowPipelineOptions;
 import org.apache.beam.sdk.options.Default;
 import org.apache.beam.sdk.options.Validation;
 import org.apache.beam.sdk.options.ValueProvider; /**
- * The {@link com.google.cloud.teleport.v2.options.SpannerChangeStreamsToPubSubOptions} interface provides the custom execution options
+ * The {@link com.google.cloud.teleport.v2.options.SpannerChangeStreamsToBigQueryDeleteLogTableOptions} interface provides the custom execution options
  * passed by the executor at the command-line.
  */
 public interface SpannerChangeStreamsToBigQueryDeleteLogTableOptions extends DataflowPipelineOptions {
