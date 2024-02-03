@@ -183,7 +183,8 @@ public class SpannerChangeStreamsToBigQueryDeleteLogTable {
                 }))
             .apply("Write To BigQuery",
                 BigQueryIO.<TableRow>write()
-                    .withFormatFunction(row -> row.set(IMPORT_TS_COLUMN, Timestamp.now()))
+                    //.withFormatFunction(row -> row.set(IMPORT_TS_COLUMN, Timestamp.now()))
+                    .withFormatFunction(row -> row)
                     .withoutValidation()
                     .to(options.getOutputTableSpec())
                     .withFailedInsertRetryPolicy(InsertRetryPolicy.retryTransientErrors())
@@ -191,10 +192,11 @@ public class SpannerChangeStreamsToBigQueryDeleteLogTable {
                     .withTimePartitioning(new TimePartitioning().setField(IMPORT_TS_COLUMN).setType("HOUR"))
                     .withSchema(new TableSchema()
                         .setFields(ImmutableList.of(
-                            new TableFieldSchema().setName(COMMIT_TS_COLUMN).setType("TIMESTAMP"),
-                            new TableFieldSchema().setName(IMPORT_TS_COLUMN).setType("TIMESTAMP"),
-                            new TableFieldSchema().setName(KEYS_COLUMN).setType("JSON"),
-                            new TableFieldSchema().setName(TABLE_NAME_COLUMN).setType("STRING"))))
+                            new TableFieldSchema().setName(COMMIT_TS_COLUMN).setType("TIMESTAMP").setMode("REQUIRED"),
+                            new TableFieldSchema().setName(IMPORT_TS_COLUMN).setType("TIMESTAMP").setMode("REQUIRED").setDefaultValueExpression("CURRENT_TIMESTAMP()"),
+                            new TableFieldSchema().setName(KEYS_COLUMN).setType("JSON").setMode("REQUIRED"),
+                            new TableFieldSchema().setName(TABLE_NAME_COLUMN).setType("STRING").setMode("REQUIRED")
+                        )))
                     .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED)
                     .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND));
 
