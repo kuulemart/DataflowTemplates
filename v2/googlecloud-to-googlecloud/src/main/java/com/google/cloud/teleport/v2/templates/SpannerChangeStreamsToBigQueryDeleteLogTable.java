@@ -83,7 +83,7 @@ public class SpannerChangeStreamsToBigQueryDeleteLogTable {
     public static void main(String[] args) {
         UncaughtExceptionLogger.register();
 
-        LOG.info("Starting Input Messages to Pub/Sub");
+        LOG.info("Starting Input Messages to BigQuery");
 
         SpannerChangeStreamsToBigQueryDeleteLogTableOptions options =
             PipelineOptionsFactory.fromArgs(args).as(SpannerChangeStreamsToBigQueryDeleteLogTableOptions.class);
